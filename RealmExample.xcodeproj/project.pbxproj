@@ -14,6 +14,7 @@
 		3A71DE4229A2846E00D07EC9 /* RealmExample.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3A71DE4029A2846E00D07EC9 /* RealmExample.xcdatamodeld */; };
 		3A71DE4429A2846F00D07EC9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A71DE4329A2846F00D07EC9 /* Assets.xcassets */; };
 		3A71DE4729A2846F00D07EC9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A71DE4529A2846F00D07EC9 /* LaunchScreen.storyboard */; };
+		3A71DE4F29A2899100D07EC9 /* TodoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A71DE4E29A2899100D07EC9 /* TodoTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		3A71DE4329A2846F00D07EC9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3A71DE4629A2846F00D07EC9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3A71DE4829A2846F00D07EC9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3A71DE4E29A2899100D07EC9 /* TodoTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +68,7 @@
 				3A71DE4529A2846F00D07EC9 /* LaunchScreen.storyboard */,
 				3A71DE4829A2846F00D07EC9 /* Info.plist */,
 				3A71DE4029A2846E00D07EC9 /* RealmExample.xcdatamodeld */,
+				3A71DE4E29A2899100D07EC9 /* TodoTableViewController.swift */,
 			);
 			path = RealmExample;
 			sourceTree = "<group>";
@@ -142,6 +145,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3A71DE3C29A2846E00D07EC9 /* ViewController.swift in Sources */,
+				3A71DE4F29A2899100D07EC9 /* TodoTableViewController.swift in Sources */,
 				3A71DE3829A2846E00D07EC9 /* AppDelegate.swift in Sources */,
 				3A71DE4229A2846E00D07EC9 /* RealmExample.xcdatamodeld in Sources */,
 				3A71DE3A29A2846E00D07EC9 /* SceneDelegate.swift in Sources */,
@@ -297,8 +301,8 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -329,8 +333,8 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
