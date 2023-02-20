@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="gray" accessoryType="checkmark" indentationWidth="10" reuseIdentifier="cell" id="R8h-dg-Im7">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" accessoryType="checkmark" indentationWidth="10" reuseIdentifier="cell" editingAccessoryType="checkmark" id="R8h-dg-Im7">
                                 <rect key="frame" x="0.0" y="50" width="393" height="43.666667938232422"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="R8h-dg-Im7" id="dIE-ya-SpP">
@@ -31,7 +31,13 @@
                             <outlet property="delegate" destination="kX3-yB-kO9" id="XiL-SY-XGW"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Merhaba" id="ZIM-xN-9hs"/>
+                    <navigationItem key="navigationItem" title="Merhaba" id="ZIM-xN-9hs">
+                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="add" id="X3A-CX-ulm">
+                            <connections>
+                                <action selector="addButtonPressed:" destination="kX3-yB-kO9" id="EIc-Di-usq"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Oqd-tg-5So" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

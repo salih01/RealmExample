@@ -9,16 +9,16 @@ import UIKit
 
 class TodoTableViewController: UITableViewController {
     
-    let itemArray = ["ADANA","MERSİN","ANKARA"]
+    var itemArray = [String]()
+    let userDefaults = UserDefaults.standard
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        if let items = userDefaults.array(forKey: "list") as? [String] {
+            
+            itemArray = items
+        }
     }
 
     // MARK: - Table view data source
@@ -51,6 +51,41 @@ class TodoTableViewController: UITableViewController {
 
         }
     }
+    
+    // MARK: - Function
+    
+    func makeAlert(title:String,message:String){
+        var textField = UITextField()
         
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let okButton = UIAlertAction(title: "Ok", style: .default)
+        
+        let action = UIAlertAction(title: "Add", style: .default) {(action) in
+            self.itemArray.append(textField.text!)
+            self.userDefaults.set(self.itemArray, forKey: "list")
+            self.tableView.reloadData()
+            
+        }
+        alert.addAction(action)
+        
+        alert.addTextField { (alertTextField) in
+            
+            alertTextField.placeholder = "Yeni şehir ekle"
+            textField = alertTextField
+        }
+        self.present(alert, animated: true)
+    }
+    
+
+    
+    
+    
+    @IBAction func addButtonPressed(_ sender: UIBarButtonItem) {
+        
+        makeAlert(title: "Şehir", message: "Yeni Şehir Ekle")
+        
+    }
+    
+    
     
 }
