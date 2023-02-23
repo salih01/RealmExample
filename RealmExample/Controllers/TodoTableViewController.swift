@@ -11,9 +11,12 @@ class TodoTableViewController: UITableViewController {
     
     var itemArray:[Item] = []
     let userDefaults = UserDefaults.standard
+    let dataFilePath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathExtension("Items.plist")
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
+     
 
         newItem()
         if let items = userDefaults.array(forKey: "list") as? [Item] {
@@ -36,12 +39,12 @@ class TodoTableViewController: UITableViewController {
             newItem.title = textField.text!
             
             self.itemArray.append(newItem)
-            self.userDefaults.set(self.itemArray, forKey: "list")
-            self.tableView.reloadData()
+            self.saveItems()
+            //self.userDefaults.set(self.itemArray, forKey: "list")
+         
             
         }
         alert.addAction(action)
-        
         alert.addTextField { (alertTextField) in
             
             alertTextField.placeholder = "Yeni şehir ekle"
@@ -59,11 +62,24 @@ class TodoTableViewController: UITableViewController {
         
     }
     
+    func saveItems(){
+        
+        //MARK: -  ENCODER
+        
+        let encoder = PropertyListEncoder()
+        do{
+            let data = try encoder.encode(itemArray)
+            try data.write(to: dataFilePath!)
+        }catch {
+            print("Error encoding item array : \(error)")
+        }
+        
+        tableView.reloadData()
+    }
+  
 
 
     // MARK: - Table view data source
-
-   
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
@@ -89,6 +105,7 @@ class TodoTableViewController: UITableViewController {
         
         tableView.reloadData()
         print("didSelect")
+        self.saveItems()
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
