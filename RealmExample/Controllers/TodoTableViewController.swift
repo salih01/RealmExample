@@ -16,7 +16,11 @@ let context = appDelegate.persistentContainer.viewContext
 class TodoTableViewController: UITableViewController ,UISearchBarDelegate{
     
     var itemArray:[Item] = []
-    let userDefaults = UserDefaults.standard
+    var selectedCategory:Category? {
+        didSet {
+            loadItems()
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,12 +29,11 @@ class TodoTableViewController: UITableViewController ,UISearchBarDelegate{
         print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
         
         newItem()
-        if let items = userDefaults.array(forKey: "list") as? [Item] {
-            itemArray = items
-        }
+        
+        /*
         let request : NSFetchRequest<Item> = Item.fetchRequest()
         loadItems(request: request)
-        
+        */
     }
     
     // MARK: - Function
@@ -45,7 +48,7 @@ class TodoTableViewController: UITableViewController ,UISearchBarDelegate{
             
 
             let newItem = Item(context: context)
-            
+            newItem.parentCategory = self.selectedCategory
             newItem.title = textField.text!
             
             self.itemArray.append(newItem)

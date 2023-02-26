@@ -8,7 +8,45 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Merhaba-->
+        <!--REALM-->
+        <scene sceneID="EvN-tN-uWB">
+            <objects>
+                <tableViewController id="SBr-SA-p4z" customClass="CategoryTableViewController" customModule="RealmExample" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="7aO-gc-ElY">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="categoryCell" id="X4W-DY-4NI">
+                                <rect key="frame" x="0.0" y="50" width="393" height="43.666667938232422"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="X4W-DY-4NI" id="taZ-Ed-WEq">
+                                    <rect key="frame" x="0.0" y="0.0" width="393" height="43.666667938232422"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="SBr-SA-p4z" id="ped-bM-0XD"/>
+                            <outlet property="delegate" destination="SBr-SA-p4z" id="coF-U8-yPR"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="REALM" largeTitleDisplayMode="always" id="kvP-c1-sKV">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="bz4-iS-08O">
+                            <connections>
+                                <action selector="addButton:" destination="SBr-SA-p4z" id="740-mC-C4B"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <segue destination="kX3-yB-kO9" kind="show" identifier="goToItems" id="d9y-0L-xa1"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GOB-Y4-wRp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="712" y="87"/>
+        </scene>
+        <!--Items-->
         <scene sceneID="Alu-Ei-JLt">
             <objects>
                 <tableViewController id="kX3-yB-kO9" customClass="TodoTableViewController" customModule="RealmExample" customModuleProvider="target" sceneMemberID="viewController">
@@ -39,7 +77,7 @@
                             <outlet property="delegate" destination="kX3-yB-kO9" id="XiL-SY-XGW"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Merhaba" id="ZIM-xN-9hs">
+                    <navigationItem key="navigationItem" title="Items" id="ZIM-xN-9hs">
                         <barButtonItem key="rightBarButtonItem" style="done" systemItem="add" id="X3A-CX-ulm">
                             <connections>
                                 <action selector="addButtonPressed:" destination="kX3-yB-kO9" id="EIc-Di-usq"/>
@@ -49,7 +87,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Oqd-tg-5So" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="959.5419847328244" y="69.718309859154928"/>
+            <point key="canvasLocation" x="1534" y="87"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="qYr-xw-8TH">
@@ -62,12 +100,12 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="kX3-yB-kO9" kind="relationship" relationship="rootViewController" id="crz-rf-LhW"/>
+                        <segue destination="SBr-SA-p4z" kind="relationship" relationship="rootViewController" id="PrV-ck-1Nc"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W40-DG-JEC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="32.824427480916029" y="69.718309859154928"/>
+            <point key="canvasLocation" x="-131" y="87"/>
         </scene>
     </scenes>
     <resources>

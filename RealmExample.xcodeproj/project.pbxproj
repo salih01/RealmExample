@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3A6A323B29ABBE0F00016884 /* CategoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6A323A29ABBE0F00016884 /* CategoryTableViewController.swift */; };
 		3A71DE3829A2846E00D07EC9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A71DE3729A2846E00D07EC9 /* AppDelegate.swift */; };
 		3A71DE3A29A2846E00D07EC9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A71DE3929A2846E00D07EC9 /* SceneDelegate.swift */; };
 		3A71DE3F29A2846E00D07EC9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A71DE3D29A2846E00D07EC9 /* Main.storyboard */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3A6A323A29ABBE0F00016884 /* CategoryTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTableViewController.swift; sourceTree = "<group>"; };
 		3A71DE3429A2846E00D07EC9 /* RealmExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RealmExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A71DE3729A2846E00D07EC9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3A71DE3929A2846E00D07EC9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -79,6 +81,7 @@
 			isa = PBXGroup;
 			children = (
 				3A71DE4E29A2899100D07EC9 /* TodoTableViewController.swift */,
+				3A6A323A29ABBE0F00016884 /* CategoryTableViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -175,6 +178,7 @@
 			files = (
 				3A71DE4F29A2899100D07EC9 /* TodoTableViewController.swift in Sources */,
 				3A71DE3829A2846E00D07EC9 /* AppDelegate.swift in Sources */,
+				3A6A323B29ABBE0F00016884 /* CategoryTableViewController.swift in Sources */,
 				3A71DE4229A2846E00D07EC9 /* RealmExample.xcdatamodeld in Sources */,
 				3A71DE3A29A2846E00D07EC9 /* SceneDelegate.swift in Sources */,
 			);
