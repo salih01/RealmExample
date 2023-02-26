@@ -6,22 +6,30 @@
 //
 
 import UIKit
+import CoreData
 
-class TodoTableViewController: UITableViewController {
+// MARK: - Core Data
+let appDelegate = UIApplication.shared.delegate as! AppDelegate
+let context = appDelegate.persistentContainer.viewContext
+
+
+class TodoTableViewController: UITableViewController ,UISearchBarDelegate{
     
     var itemArray:[Item] = []
     let userDefaults = UserDefaults.standard
-    let dataFilePath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathExtension("Items.plist")
-    
 
     override func viewDidLoad() {
         super.viewDidLoad()
      
 
+        print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
+        
         newItem()
         if let items = userDefaults.array(forKey: "list") as? [Item] {
             itemArray = items
         }
+        let request : NSFetchRequest<Item> = Item.fetchRequest()
+        loadItems(request: request)
         
     }
     
@@ -35,12 +43,13 @@ class TodoTableViewController: UITableViewController {
         
         let action = UIAlertAction(title: "Add", style: .default) {(action) in
             
-            let newItem = Item()
+
+            let newItem = Item(context: context)
+            
             newItem.title = textField.text!
             
             self.itemArray.append(newItem)
             self.saveItems()
-            //self.userDefaults.set(self.itemArray, forKey: "list")
          
             
         }
@@ -55,29 +64,53 @@ class TodoTableViewController: UITableViewController {
     
     func newItem(){
         
-        let newItem = Item()
+        let newItem = Item(context: context)
         newItem.title = "Adana"
-        newItem.checkMark = false
+        newItem.done = false
         itemArray.append(newItem)
         
     }
-    
+    // MARK: - saveItems
     func saveItems(){
-        
-        //MARK: -  ENCODER
-        
-        let encoder = PropertyListEncoder()
+
         do{
-            let data = try encoder.encode(itemArray)
-            try data.write(to: dataFilePath!)
+           
+            try context.save()
         }catch {
             print("Error encoding item array : \(error)")
         }
         
         tableView.reloadData()
     }
-  
-
+    // MARK: - loadItems
+    func loadItems(request:NSFetchRequest<Item> = Item.fetchRequest()){
+       
+        do{
+           itemArray = try context.fetch(request)
+        } catch{
+            print("loadItemsError : \(error.localizedDescription)")
+        }
+        tableView.reloadData()
+    }
+    // MARK: - SerchBar
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        let request :NSFetchRequest<Item> = Item.fetchRequest()
+        let predicate = NSPredicate(format: "title CONTAINS[cd] %@", searchBar.text!)
+      
+        request.sortDescriptors = [NSSortDescriptor(key: "title", ascending: true)]
+ 
+        loadItems(request: request)
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+       if searchBar.text?.count == 0 {
+            loadItems()
+           DispatchQueue.main.async {
+               searchBar.resignFirstResponder()
+           }
+        }
+    }
+    
 
     // MARK: - Table view data source
 
@@ -92,7 +125,7 @@ class TodoTableViewController: UITableViewController {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         cell.textLabel?.text = item.title
-        cell.accessoryType = item.checkMark == true ? .checkmark : .none
+        cell.accessoryType = item.done == true ? .checkmark : .none
         return cell
         
     }
@@ -101,9 +134,12 @@ class TodoTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        itemArray[indexPath.row].checkMark = !itemArray[indexPath.row].checkMark
+        //context.delete(itemArray[indexPath.row])
+        //itemArray.remove(at: indexPath.row)
+
         
-        tableView.reloadData()
+        itemArray[indexPath.row].done = !itemArray[indexPath.row].done
+    
         print("didSelect")
         self.saveItems()
         tableView.deselectRow(at: indexPath, animated: true)
